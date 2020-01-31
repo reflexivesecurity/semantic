@@ -33,7 +33,7 @@ jobs:
         done
         echo Finish loop
         echo ::set-env name=version_array::$VERSION_ARRAY
-        echo env.version_array
+        echo $VERSION_ARRAY
     - name: Build and publish
       if: env.version_array[0] == 'True'
       env:
