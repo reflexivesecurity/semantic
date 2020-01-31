@@ -22,11 +22,11 @@ jobs:
       run: |
         declare -a VERSION_ARRAY
         echo Create Array
-        echo ::set-env name=SEMANTIC::$(semantic)
+        SEMANTIC=$(semantic)
         echo Get Version Info
         ITERATOR=0
         echo Create Iterator
-        for x in env.SEMANTIC 
+        for x in SEMANTIC 
           do VERSION_ARRAY[$ITERATOR]=$x 
           let ITERATOR=ITERATOR+1  
           echo $ITERATOR; 
