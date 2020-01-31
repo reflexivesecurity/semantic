@@ -21,7 +21,7 @@ jobs:
     - name: Get Version
       run: |
         echo ::set-env name=SEMANTIC::$(semantic)  
-    - name: Check if Release
+    - name: Check if Release in commit
       run: |
         echo $SEMANTIC
         declare -a VERSION_ARRAY
