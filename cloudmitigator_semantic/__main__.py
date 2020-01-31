@@ -58,4 +58,4 @@ def determine_if_bump_has_occurred():
 
 
 if __name__ == "__main__":
-    print(determine_if_bump_has_occurred())
+    determine_if_bump_has_occurred()
