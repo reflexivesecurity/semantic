@@ -35,8 +35,9 @@ jobs:
         echo Finish loop
         echo $VERSION_ARRAY
         if [$VERSION_ARRAY == True]
-          echo ::set-env name=VERSION_CHANGED::${VERSION_ARRAY[0]}
-          echo ::set-env name=VERSION::${VERSION_ARRAY[1]}
+          then
+            echo ::set-env name=VERSION_CHANGED::${VERSION_ARRAY[0]}
+            echo ::set-env name=VERSION::${VERSION_ARRAY[1]}
         fi
         
     - name: Build and publish
