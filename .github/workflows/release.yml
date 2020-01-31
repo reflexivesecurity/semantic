@@ -22,7 +22,12 @@ jobs:
       run: |
         declare -a VERSION_ARRAY
         SEMANTIC=$(semantic)
-        ITERATOR=0; for x in $SEMANTIC; do VERSION_ARRAY[$ITERATOR]=$x ; let ITERATOR=ITERATOR+1 ; echo $ITERATOR; done
+        ITERATOR=0
+        for x in $SEMANTIC 
+          do VERSION_ARRAY[$ITERATOR]=$x 
+          let ITERATOR=ITERATOR+1  
+          echo $ITERATOR; 
+        done
         echo ::set-env name=version_array::$VERSION_ARRAY
         echo $version_array
     - name: Build and publish
