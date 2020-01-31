@@ -1,4 +1,4 @@
-#CloudMitigator Semantic
+# CloudMitigator Semantic
 
 Allows you to manage versioning and releases using git tags as the source of truth. No more manual bumping
 of version files. CloudMitigator Semantic allows the user to control releases via commit messages. All the rest is handled for you.
@@ -28,7 +28,7 @@ The first part tells you whether a trigger word was found in the commit message.
 
 The second part tells you what version it is currently (if False), or will become (if True)
 
-###Requirements:
+### Requirements:
 
 Must run command within a directory that has git initialized.
 
