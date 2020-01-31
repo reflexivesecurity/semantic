@@ -1,8 +1,9 @@
 name: Upload Python Package
 
 on:
-  release:
-    types: [created]
+  push:
+    branches:
+      - master
 
 jobs:
   deploy:
@@ -18,19 +19,51 @@ jobs:
         python -m pip install --upgrade pip
         pip install setuptools wheel twine
         pip install cloudmitigator_semantic
-    - name: Check if Release
+    - name: Get Version
       run: |
+        echo ::set-env name=SEMANTIC::$(semantic)  
+    - name: Check if Release in commit
+      run: |
+        echo $SEMANTIC
         declare -a VERSION_ARRAY
-        SEMANTIC=$(semantic)
-        ITERATOR=0; for x in $SEMANTIC; do VERSION_ARRAY[$ITERATOR]=$x ; let ITERATOR=ITERATOR+1 ; echo $ITERATOR; done
-        echo ::set-env name=version_array::$VERSION_ARRAY
-        echo $version_array
+        echo Create Array
+        ITERATOR=0
+        echo Create Iterator
+        for x in $SEMANTIC 
+          do VERSION_ARRAY[$ITERATOR]=$x 
+          let ITERATOR=ITERATOR+1  
+        done
+        echo Finish loop
+        echo $VERSION_ARRAY
+        if [ "${VERSION_ARRAY[0]}" == "True" ]
+          then
+            echo True
+            echo ::set-env name=VERSION_CHANGED::${VERSION_ARRAY[0]}
+            echo ::set-env name=VERSION::${VERSION_ARRAY[1]}
+        fi
+        
+    - name: Create Release
+      if: env.VERSION_CHANGED
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+      with:
+        tag_name: ${{ env.VERSION }}
+        release_name: Release ${{ env.VERSION }}
+        body: |
+          Changes in this Release
+          - First Change
+          - Second Change
+        draft: false
+        prerelease: false
+        
     - name: Build and publish
-      if: ${versionarray[0]} == "True"
+      if: env.VERSION_CHANGED
       env:
         TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
         TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
       run: |
-        export VERSION=${version_array}
+        export VERSION=env.version_array
         python setup.py sdist bdist_wheel
         twine upload dist/*
