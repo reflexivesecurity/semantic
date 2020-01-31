@@ -23,10 +23,9 @@ jobs:
         echo ::set-env name=SEMANTIC::$(semantic)  
     - name: Check if Release Commit
       run: |
+        echo env.SEMANTIC
         declare -a VERSION_ARRAY
         echo Create Array
-        SEMANTIC=$(semantic)
-        echo Get Version Info
         ITERATOR=0
         echo Create Iterator
         for x in env.SEMANTIC 
