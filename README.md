@@ -1,7 +1,6 @@
 # CloudMitigator Semantic 
 
-
-![Upload Python Package](https://github.com/cloudmitigator/semantic/workflows/Upload%20Python%20Package/badge.svg)
+![Release](https://github.com/cloudmitigator/semantic/workflows/Release/badge.svg)
 
 
 Allows you to manage versioning and releases using git tags as the source of truth. No more manual bumping
