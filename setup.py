@@ -10,7 +10,7 @@ for requirements_file in requirements_files:
         install_requires += f.readlines()
 
 setuptools.setup(name='cloudmitigator_semantic',
-                 version=check_if_bump_version(),
+                 version=check_if_bump_version().version,
                  description='Means of automating the release version of a git repo using git tags',
                  author='Michael Schappacher',
                  author_email='m.a.schappacher@gmail.com',
