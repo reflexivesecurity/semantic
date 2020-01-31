@@ -1,4 +1,4 @@
-# CloudMitigator Semantic
+# CloudMitigator Semantic 
 
 Allows you to manage versioning and releases using git tags as the source of truth. No more manual bumping
 of version files. CloudMitigator Semantic allows the user to control releases via commit messages. All the rest is handled for you.
