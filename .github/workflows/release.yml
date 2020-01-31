@@ -18,7 +18,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install setuptools wheel twine
         python setup.py install
-    - name: Check if Release
+    - name: Check if Release Commit
       run: |
         declare -a VERSION_ARRAY
         echo Create Array
