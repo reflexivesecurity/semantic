@@ -36,7 +36,7 @@ jobs:
         echo $VERSION_ARRAY
         echo ::set-env name=version_array::$VERSION_ARRAY
     - name: Build and publish
-      if: $version_array == 'True'
+      if: env.version_array == True
       env:
         TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
         TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
