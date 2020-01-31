@@ -18,6 +18,9 @@ jobs:
         python -m pip install --upgrade pip
         pip install setuptools wheel twine
         python setup.py install
+    - name: Get Version
+      run: |
+        echo ::set-env name=SEMANTIC::$(semantic)  
     - name: Check if Release Commit
       run: |
         declare -a VERSION_ARRAY
@@ -26,20 +29,19 @@ jobs:
         echo Get Version Info
         ITERATOR=0
         echo Create Iterator
-        for x in SEMANTIC 
+        for x in env.SEMANTIC 
           do VERSION_ARRAY[$ITERATOR]=$x 
           let ITERATOR=ITERATOR+1  
           echo $ITERATOR; 
         done
         echo Finish loop
         echo ::set-env name=version_array::$VERSION_ARRAY
-        echo $VERSION_ARRAY
     - name: Build and publish
       if: env.version_array[0] == 'True'
       env:
         TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
         TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
       run: |
-        export VERSION=${version_array}
+        export VERSION=env.version_array
         python setup.py sdist bdist_wheel
         twine upload dist/*
