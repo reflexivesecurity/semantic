@@ -54,7 +54,6 @@ def check_if_bump_version():
 def determine_if_bump_has_occurred():
     git_version = check_if_bump_version()
     sys.stdout.write(f"{str(git_version.version_changed)} {str(git_version.version)}")
-    return git_version.version_changed, git_version.version
 
 
 if __name__ == "__main__":
