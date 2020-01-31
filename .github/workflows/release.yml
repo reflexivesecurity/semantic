@@ -42,6 +42,22 @@ jobs:
             echo ::set-env name=VERSION::${VERSION_ARRAY[1]}
         fi
         
+    - name: Create Release
+      if: env.VERSION_CHANGED
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+      with:
+        tag_name: $VERSION
+        release_name: Release $VERSION
+        body: |
+          Changes in this Release
+          - First Change
+          - Second Change
+        draft: false
+        prerelease: false
+        
     - name: Build and publish
       if: env.VERSION_CHANGED
       env:
