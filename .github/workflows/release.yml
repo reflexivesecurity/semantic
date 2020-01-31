@@ -36,6 +36,7 @@ jobs:
         echo $VERSION_ARRAY
         if [ '$VERSION_ARRAY' == 'True' ]
           then
+            echo True
             echo ::set-env name=VERSION_CHANGED::${VERSION_ARRAY[0]}
             echo ::set-env name=VERSION::${VERSION_ARRAY[1]}
         fi
