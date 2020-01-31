@@ -34,7 +34,7 @@ jobs:
         done
         echo Finish loop
         echo $VERSION_ARRAY
-        if [ '$VERSION_ARRAY' == 'True' ]
+        if [ "${VERSION_ARRAY[0]}" == "True" ]
           then
             echo True
             echo ::set-env name=VERSION_CHANGED::${VERSION_ARRAY[0]}
