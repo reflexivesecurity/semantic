@@ -34,9 +34,13 @@ jobs:
         done
         echo Finish loop
         echo $VERSION_ARRAY
-        echo ::set-env name=version_array::$VERSION_ARRAY
+        if [$VERSION_ARRAY == True]
+          echo ::set-env name=VERSION_CHANGED::${VERSION_ARRAY[0]}
+          echo ::set-env name=VERSION::${VERSION_ARRAY[1]}
+        fi
+        
     - name: Build and publish
-      if: env.version_array == True
+      if: env.VERSION_CHANGED
       env:
         TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
         TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
