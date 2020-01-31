@@ -42,11 +42,11 @@ def check_if_bump_version():
     git_version = get_current_git_version_from_tag()
     bump_type = scan_git_for_trigger_words()
     if bump_type is not None:
-        if bump_type is "major":
+        if bump_type == "major":
             git_version.bump_major()
-        if bump_type is "minor":
+        if bump_type == "minor":
             git_version.bump_minor()
-        if bump_type is "patch":
+        if bump_type == "patch":
             git_version.bump_patch()
     return git_version
 
