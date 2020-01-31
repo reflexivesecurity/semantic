@@ -23,7 +23,7 @@ jobs:
         echo ::set-env name=SEMANTIC::$(semantic)  
     - name: Check if Release Commit
       run: |
-        echo env.SEMANTIC
+        echo $env.SEMANTIC
         declare -a VERSION_ARRAY
         echo Create Array
         ITERATOR=0
