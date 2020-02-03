@@ -1,15 +1,9 @@
 import logging
+import os
 import sys
 import cloudmitigator_semantic.utilities
 import cloudmitigator_semantic.version
-
-trigger_dict = {
-    "major": ["Major:", "major:", "Breaking:", "breaking:"],
-    "minor": ["Minor:", "minor:"],
-    "patch": ["Patch:", "patch:"],
-    "prerelease": [],
-    "metadata": []
-}
+import yaml
 
 
 def get_current_git_version_from_tag():
@@ -30,6 +24,17 @@ def get_most_recent_commit_message():
 
 
 def scan_git_for_trigger_words():
+    if os.path.exists("semantic.yml"):
+        with open("semantic.yml") as trigger_file:
+            trigger_dict = yaml.safe_load(trigger_file)
+    else:
+        trigger_dict = {
+            "major": ["Major:", "major:", "Breaking:", "breaking:"],
+            "minor": ["Minor:", "minor:"],
+            "patch": ["Patch:", "patch:"],
+            "prerelease": [],
+            "metadata": []
+        }
     message = get_most_recent_commit_message()
     for key in trigger_dict:
         for trigger_word in trigger_dict[key]:
