@@ -25,7 +25,7 @@ jobs:
         if [ "${CHANGED}" == "True" ]
           then
             echo ::set-env name=VERSION_CHANGED::${CHANGED}
-            echo ::set-env name=VERSION::${semantic version}
+            echo ::set-env name=VERSION::$(semantic version)
         fi
         
     - name: Create Release
