@@ -18,7 +18,7 @@ def changed():
 
 @semantic.command("version")
 def version():
-    sys.stdout.write(str(git_actions.version))
+    sys.stdout.write(str(git_actions.version.version))
 
 
 if __name__ == "__main__":
