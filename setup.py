@@ -1,5 +1,7 @@
 import setuptools
-from cloudmitigator_semantic.__main__ import check_if_bump_version
+import cloudmitigator_semantic.git
+
+git_actions = cloudmitigator_semantic.git.GitActions()
 
 requirements_files = ['requirements.txt']
 
@@ -10,7 +12,7 @@ for requirements_file in requirements_files:
         install_requires += f.readlines()
 
 setuptools.setup(name='cloudmitigator_semantic',
-                 version=check_if_bump_version().version,
+                 version=git_actions.version.version,
                  description='Means of automating the release version of a git repo using git tags',
                  author='Michael Schappacher',
                  author_email='m.a.schappacher@gmail.com',
@@ -18,6 +20,6 @@ setuptools.setup(name='cloudmitigator_semantic',
                  packages=["cloudmitigator_semantic"],
                  entry_points="""
                     [console_scripts]
-                    semantic=cloudmitigator_semantic.__main__:determine_if_bump_has_occurred
+                    semantic=cloudmitigator_semantic.cli:semantic
                  """
                  )

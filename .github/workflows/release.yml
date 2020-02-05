@@ -19,27 +19,13 @@ jobs:
         python -m pip install --upgrade pip
         pip install setuptools wheel twine pyaml
         python setup.py install
-    - name: Get Version
+    - name: See if Version Changed
       run: |
-        echo ::set-env name=SEMANTIC::$(semantic)  
-    - name: Check if Release in commit
-      run: |
-        echo $SEMANTIC
-        declare -a VERSION_ARRAY
-        echo Create Array
-        ITERATOR=0
-        echo Create Iterator
-        for x in $SEMANTIC 
-          do VERSION_ARRAY[$ITERATOR]=$x 
-          let ITERATOR=ITERATOR+1  
-        done
-        echo Finish loop
-        echo $VERSION_ARRAY
-        if [ "${VERSION_ARRAY[0]}" == "True" ]
+        CHANGED=$(semantic version-changed)
+        if [ "${CHANGED}" == "True" ]
           then
-            echo True
-            echo ::set-env name=VERSION_CHANGED::${VERSION_ARRAY[0]}
-            echo ::set-env name=VERSION::${VERSION_ARRAY[1]}
+            echo ::set-env name=VERSION_CHANGED::${CHANGED}
+            echo ::set-env name=VERSION::${semantic version}
         fi
         
     - name: Create Release
