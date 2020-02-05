@@ -11,7 +11,7 @@ def semantic():
     pass
 
 
-@semantic.command("version-changed")
+@semantic.command("changed")
 def changed():
     sys.stdout.write(str(git_actions.version.version_changed))
 
