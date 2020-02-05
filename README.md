@@ -11,6 +11,21 @@ Just use trigger words listed below, and if a word is detected, a release will b
 - Minor release: `Minor:` `minor:`
 - Patch release: `Patch:` `patch:`
 
+Trigger words can also be modified through the inclusion of a semantic.yml.
+
+    major:
+      - "Major:"
+      - "major:"
+
+    minor:
+      - "Minor:"
+      - "minor:"
+
+    patch:
+      - "patch:"
+      - "Patch"
+
+
 ## Installation:
 
 Run `pip install cloudmitigator_semantic`
@@ -19,17 +34,16 @@ This will install a script called `semantic`
 
 ## Usage:
 
-Run `semantic` in the directory you wish to check. The script will print out a message that looks like.
+Run `semantic --help` for a list of commands that can be run.
 
-    [True, 'v0.0.1']
+`semantic version` will return the latest git tag version if it has been changed, or the current git tag version if unchanged.
+
+    v0.0.1
     
-or
+`semantic changed` will return a boolean on whether or not the version has been incremented.
 
-    [False, 'v0.0.0']
+    False
     
-The first part tells you whether a trigger word was found in the commit message.
-
-The second part tells you what version it is currently (if False), or will become (if True)
 
 ### Requirements:
 
@@ -38,3 +52,5 @@ Must run command within a directory that has git initialized.
 If no version tag is specified then a default of v0.0.0 will be given. Make sure to tag your repo if you wish to start at a different seed number.
 
 This module is only compatible with 'v' tagging. This means '0.0.0' will not be recognized where 'v0.0.1' will be.
+
+This is meant to be run as part of a github action. Please see the sample implementation for an example.
