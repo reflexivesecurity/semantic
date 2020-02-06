@@ -34,7 +34,7 @@ This will install a script called `semantic`
 
 ## Usage:
 
-Run `semantic --help` for a list of commands that can be run.
+Run `semantic --help` for a list of commands that can be run. 
 
 `semantic version` will return the latest git tag version if it has been changed, or the current git tag version if unchanged.
 
