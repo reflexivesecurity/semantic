@@ -43,7 +43,7 @@ class GitActions:
                 "prerelease": [],
                 "metadata": []
             }
-        message = self.get_most_recent_commit_message()
+        message = self.git_commit_message
         for key in trigger_dict:
             for trigger_word in trigger_dict[key]:
                 if trigger_word in message:
@@ -61,17 +61,8 @@ class GitActions:
             if bump_type == "patch":
                 git_version.bump_patch()
 
-    def determine_if_bump_has_occurred(self):
-        sys.stdout.write(f"{str(self.version.version_changed)} {str(self.version.version)}")
-
     def tag_current_repo(self):
         if self.version.version_changed:
             cloudmitigator_semantic.utilities.run_bash_command_return_error(
                 f"git tag {self.version.version}"
             )
-
-
-if __name__ == "__main__":
-    git_actions = GitActions()
-    sys.stdout.write(git_actions.version.version_changed)
-    git_actions.tag_current_repo()
