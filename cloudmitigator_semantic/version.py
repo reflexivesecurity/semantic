@@ -36,13 +36,13 @@ class Version:
         version_match = re.search(regex, self.__version)
         if version_match.group("major"):
             self.major = int(version_match.group("major"))
-        elif version_match.group("minor"):
+        if version_match.group("minor"):
             self.minor = int(version_match.group("minor"))
-        elif version_match.group("patch"):
+        if version_match.group("patch"):
             self.patch = int(version_match.group("patch"))
-        elif version_match.group("prerelease"):
+        if version_match.group("prerelease"):
             self.prerelease = version_match.group("prerelease")
-        elif version_match.group("buildmetadata"):
+        if version_match.group("buildmetadata"):
             self.metadata = version_match.group("buildmetadata")
 
     def bump_minor(self):

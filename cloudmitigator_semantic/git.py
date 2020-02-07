@@ -56,9 +56,9 @@ class GitActions:
         if bump_type is not None:
             if bump_type == "major":
                 git_version.bump_major()
-            if bump_type == "minor":
+            elif bump_type == "minor":
                 git_version.bump_minor()
-            if bump_type == "patch":
+            elif bump_type == "patch":
                 git_version.bump_patch()
 
     def tag_current_repo(self):
