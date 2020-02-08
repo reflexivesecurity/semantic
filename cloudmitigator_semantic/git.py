@@ -26,7 +26,7 @@ class GitActions:
         """
         git_tag_list = cloudmitigator_semantic.utilities.\
             run_bash_command_return_error(
-                "git tag"
+                "git tag -l | sort -V"
             )
         try:
             most_recent_tag = git_tag_list[-1]
