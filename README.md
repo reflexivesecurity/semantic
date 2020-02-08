@@ -13,15 +13,13 @@ Just use trigger words listed below, and if a word is detected, a release will b
 Trigger words can also be modified through the inclusion of a semantic.yml.
 
     major:
-      - "Major:"
       - "major:"
+      - "breaking:"
 
     minor:
-      - "Minor:"
       - "minor:"
 
     patch:
-      - "patch:"
       - "Patch"
 
 
