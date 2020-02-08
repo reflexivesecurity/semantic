@@ -50,8 +50,8 @@ class GitActions:
 
     def scan_git_for_trigger_words(self):
         """Check if trigger word in commit message."""
-        if os.path.exists("semantic.yml"):
-            with open("semantic.yml") as trigger_file:
+        if os.path.exists(f"{os.getcwd()}/semantic.yml"):
+            with open(f"{os.getcwd()}/semantic.yml") as trigger_file:
                 trigger_dict = yaml.safe_load(trigger_file)
         else:
             trigger_dict = {
