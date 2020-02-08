@@ -46,7 +46,7 @@ class GitActions:
                 "git log -1"
             )
         git_recent_commit_message = git_recent_commit[-1]
-        return git_recent_commit_message
+        return git_recent_commit_message.lower()
 
     def scan_git_for_trigger_words(self):
         """Check if trigger word in commit message."""
@@ -55,9 +55,9 @@ class GitActions:
                 trigger_dict = yaml.safe_load(trigger_file)
         else:
             trigger_dict = {
-                "major": ["Major:", "major:", "Breaking:", "breaking:"],
-                "minor": ["Minor:", "minor:"],
-                "patch": ["Patch:", "patch:"],
+                "major": ["major:", "breaking:"],
+                "minor": ["minor:"],
+                "patch": ["patch:"],
                 "prerelease": [],
                 "metadata": [],
             }
