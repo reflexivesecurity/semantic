@@ -20,7 +20,7 @@ Trigger words can also be modified through the inclusion of a semantic.yml.
       - "minor:"
 
     patch:
-      - "Patch"
+      - "patch:"
 
 
 ## Installation:
