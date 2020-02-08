@@ -9,7 +9,7 @@ GIT_ACTIONS = cloudmitigator_semantic.git.GitActions()
 @click.group()
 def semantic():
     """Instantiate click group."""
-    print(semantic)
+    pass
 
 
 @semantic.command(
