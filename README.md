@@ -1,6 +1,5 @@
 # CloudMitigator Semantic 
-
-![Release](https://github.com/cloudmitigator/semantic/workflows/Release/badge.svg)
+![Test and Release Version](https://github.com/cloudmitigator/semantic/workflows/Test%20and%20Release%20Version/badge.svg) [![PyPI version](https://badge.fury.io/py/cloudmitigator-semantic.svg)](https://badge.fury.io/py/cloudmitigator-semantic)
 
 
 Allows you to manage versioning and releases using git tags as the source of truth. No more manual bumping
