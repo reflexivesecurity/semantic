@@ -56,4 +56,13 @@ jobs:
         asset_path: ./dist/${{ env.EGG }}
         asset_name: ${{ env.EGG }}
         asset_content_type: application/zip
-    
+      
+    - name: Build and publish
+      if: env.VERSION_CHANGED
+      env:
+        TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
+        TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
+      run: |
+        export VERSION=env.version_array
+        python setup.py sdist bdist_wheel
+        twine upload dist/*
