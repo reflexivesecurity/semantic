@@ -10,7 +10,7 @@ Just use trigger words listed below, and if a word is detected, a release will b
 - Minor release: `Minor:` `minor:`
 - Patch release: `Patch:` `patch:`
 
-Trigger words can also be modified through the inclusion of a semantic.yml.
+Trigger words can also be modified through the inclusion of a semantic.yml. 
 
     major:
       - "major:"
