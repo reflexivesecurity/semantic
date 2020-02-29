@@ -25,7 +25,7 @@ class GitActions:
         :return: Version object initialized with current tag.
         """
         git_tag_list = cloudmitigator_semantic.utilities.\
-            run_bash_command_return_error(
+            run_bash_command_split_lines_return_error(
                 "git tag -l --sort=v:refname"
             )
         try:
