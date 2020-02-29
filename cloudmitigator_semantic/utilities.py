@@ -12,4 +12,4 @@ def run_bash_command_return_error(command):
             f"Bash command did not execute properly"
             f" \n command: {command} \n error: {error}"
         )
-    return bash_return.stdout.decode("utf-8").splitlines()
+    return bash_return.stdout.decode("utf-8")
