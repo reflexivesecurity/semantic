@@ -90,7 +90,7 @@ class GitActions:
         """Create release body for Github Actions"""
         release_body = cloudmitigator_semantic.utilities. \
             run_bash_command_return_error(
-                f"git log v0.1.2..HEAD "
+                f"git log {self.version.original_version}..HEAD "
                 f"--pretty=format:%s</br>"
             )
         return release_body
