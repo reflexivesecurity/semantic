@@ -26,8 +26,8 @@ class GitActions:
         """
         git_tag_list = cloudmitigator_semantic.utilities. \
             run_bash_command_split_lines_return_error(
-            "git tag -l --sort=v:refname"
-        )
+                "git tag -l --sort=v:refname"
+            )
         try:
             most_recent_tag = git_tag_list[-1]
         except IndexError as error:
@@ -43,8 +43,8 @@ class GitActions:
         """Extract git commit message from git log commands."""
         git_recent_commit = cloudmitigator_semantic.utilities. \
             run_bash_command_return_error(
-            "git log -1"
-        )
+                "git log -1"
+            )
         return git_recent_commit.lower()
 
     def scan_git_for_trigger_words(self):
@@ -88,7 +88,7 @@ class GitActions:
 
     def get_commits_between_tags(self):
         """Create release body for Github Actions"""
-        release_body = cloudmitigator_semantic.utilities.\
+        release_body = cloudmitigator_semantic.utilities. \
             run_bash_command_return_error(
                 f"git log {self.version.original_version}..HEAD "
                 f"--pretty=format:%s%n"
