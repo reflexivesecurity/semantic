@@ -26,7 +26,7 @@ Trigger words can also be modified through the inclusion of a semantic.yml.
 ## Installation:
 
 Run `pip install cloudmitigator_semantic`
-
+ 
 This will install a script called `semantic`
 
 ## Usage:
