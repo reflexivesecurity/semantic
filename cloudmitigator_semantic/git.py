@@ -85,8 +85,3 @@ class GitActions:
             cloudmitigator_semantic.utilities.run_bash_command_return_error(
                 f"git tag {self.version.version}"
             )
-
-if __name__ == "__main__":
-    test = GitActions()
-    print(test.version.version_changed)
-    print(test.get_most_recent_commit_message())
