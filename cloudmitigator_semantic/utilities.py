@@ -16,7 +16,7 @@ def run_bash_command_return_error(command):
 
 
 def run_bash_command_split_lines_return_error(command):
-    """Convert command into bash command."""
+    """Convert command into bash command split lines."""
     command = command.split(" ")
     try:
         bash_return = subprocess.run(command, capture_output=True, check=True)
