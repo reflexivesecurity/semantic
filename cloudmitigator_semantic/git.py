@@ -44,7 +44,7 @@ class GitActions:
         git_recent_commit = cloudmitigator_semantic.utilities.\
             run_bash_command_return_error(
                 "git log -1"
-            )[0]
+            )
         return git_recent_commit.lower()
 
     def scan_git_for_trigger_words(self):
@@ -85,3 +85,8 @@ class GitActions:
             cloudmitigator_semantic.utilities.run_bash_command_return_error(
                 f"git tag {self.version.version}"
             )
+
+if __name__ == "__main__":
+    test = GitActions()
+    print(test.version.version_changed)
+    print(test.get_most_recent_commit_message())
