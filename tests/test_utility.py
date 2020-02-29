@@ -8,7 +8,8 @@ class UtilityTestCase(unittest.TestCase):
     def test_bash_commands(self):
         command = "echo Hello"
         output = utilities.run_bash_command_return_error(command)
-        self.assertEqual(output[0], "Hello")
+        self.assertEqual(output, "Hello\n")
+        self.assertIn("Hello", output)
 
     def test_bash_command_failure(self):
         with self.assertRaises(TypeError):
