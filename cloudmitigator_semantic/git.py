@@ -44,9 +44,8 @@ class GitActions:
         git_recent_commit = cloudmitigator_semantic.utilities.\
             run_bash_command_return_error(
                 "git log -1"
-            )
-        git_recent_commit_message = git_recent_commit[-1]
-        return git_recent_commit_message.lower()
+            )[0]
+        return git_recent_commit.lower()
 
     def scan_git_for_trigger_words(self):
         """Check if trigger word in commit message."""
