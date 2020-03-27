@@ -3,6 +3,7 @@
 import logging
 import os
 import yaml
+import re
 import cloudmitigator_semantic.utilities
 import cloudmitigator_semantic.version
 
@@ -26,16 +27,20 @@ class GitActions:
         """
         git_tag_list = cloudmitigator_semantic.utilities. \
             run_bash_command_split_lines_return_error(
-                "git tag -l --sort=v:refname"
+                "git tag -l --sort=-v:refname"
             )
-        try:
-            most_recent_tag = git_tag_list[-1]
-        except IndexError as error:
-            logging.error(
-                "No tags exist for current git"
-                " repo initializing at v0.0.0 %s", error
-            )
-            most_recent_tag = "v0.0.0"
+        regex = (
+            r"^v(?P<major>0|[1-9]\d*)\.(?P<minor>0|[1-9]\d*)\.(?P<patch"
+            r">0|[1-9]\d*)(?:-(?P<prerelease>(?:0|[1-9]\d*|\d*[a-zA-Z-]"
+            r"[0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]"
+            r"*))*))?(?:\+(?P<buildmetadata>[0-9a-zA-Z-]+(?:\.[0-9a-zA"
+            r"-Z-]+)*))?$"
+        )
+        most_recent_tag = "v0.0.0"
+        for tag in git_tag_list:
+            if re.search(regex, tag):
+                most_recent_tag = tag
+                break
         return cloudmitigator_semantic.version.Version(most_recent_tag)
 
     @staticmethod
