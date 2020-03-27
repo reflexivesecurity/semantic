@@ -1,9 +1,8 @@
 """Object handling interactions between the command line and git."""
 
-import logging
 import os
-import yaml
 import re
+import yaml
 import cloudmitigator_semantic.utilities
 import cloudmitigator_semantic.version
 
