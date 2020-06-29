@@ -1,0 +1,18 @@
+name: 'Cloudmitigator Semantic'
+description: 'Used for determining semantic versioning and release versions'
+outputs:
+  version_changed:
+    description: boolean showing whether the commit contained a trigger word for changing the version.
+  version:
+    description: actual version, after semantic determines the newest version.
+  egg:
+    description: name of egg distriubutable
+  release_body:
+    description: collection of commit titles to be added into the release description.
+  time: # id of output
+    description: 'The time we greeted you'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.who-to-greet }}
