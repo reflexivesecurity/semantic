@@ -31,6 +31,23 @@ def version():
     """Click command to return current/new version."""
     sys.stdout.write(str(GIT_ACTIONS.version.version))
 
+@semantic.command(
+    "bump",
+    short_help="Return a boolean on whether or not the version has been "
+               "incremented.",
+)
+def bump():
+    """Click command to return current/new version."""
+    sys.stdout.write(str(GIT_ACTIONS.version.version))
+
+@semantic.command(
+    "current",
+    short_help="Return current git tag version string."
+)
+def current():
+    """Click command to return current/new version."""
+    sys.stdout.write(str(GIT_ACTIONS.version.original_version))
+
 
 @semantic.command(
     "release-body",
